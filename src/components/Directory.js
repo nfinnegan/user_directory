@@ -4,41 +4,30 @@ const empDirectory = () => {
   let allEmps = [];
   let filteredEmps = [];
   let newEmps;
-  fetch("https://randomuser.me/api/?results=20")
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log({ data });
-      const { results } = data;
-      let allEmps = results;
-      console.log(results);
-      //    allEmps.forEach((employee)=>{
-      //     newEmps = [
-      //         {
-      //           id: Math.floor(Math.random() * 1000),
-      //           name: `${employee.name.first} ${employee.name.last}`,
-      //           email: employee.email,
-      //           phone: employee.cell,
-      //         },
-      //       ];
-      //    })
+  //   fetch("https://randomuser.me/api/?results=20")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       // console.log({ data });
+  //       const { results } = data;
+  //       let allEmps = results;
 
-      for (let employee of allEmps) {
-        console.log(employee);
-        newEmps = [
-          {
-            id: Math.floor(Math.random() * 1000),
-            name: `${employee.name.first} ${employee.name.last}`,
-            email: employee.email,
-            phone: employee.cell,
-          },
-        ];
-        console.log(newEmps);
-        filteredEmps.push(...newEmps);
-      }
-      console.log(filteredEmps);
-    });
+  for (let employee of allEmps) {
+    //console.log(employee);
+    newEmps = [
+      {
+        id: Math.floor(Math.random() * 1000),
+        name: `${employee.name.first} ${employee.name.last}`,
+        email: employee.email,
+        phone: employee.cell,
+      },
+    ];
 
-  console.log(filteredEmps);
+    filteredEmps.push(...newEmps);
+  }
+  //console.log(filteredEmps);
+
+  //console.log(filteredEmps);
+
   const columns = [
     {
       name: "id",
