@@ -3,15 +3,15 @@ import "./style.css";
 
 const Footer = () => {
   return (
-    <footer class="footer fixed-bottom">
-      <div class="container fluid ">
+    <footer className="footer fixed-bottom">
+      <div className="container fluid ">
         <a
           href="https://github.com/nfinnegan"
-          class="githubLink"
+          className="githubLink"
           target="_blank"
           rel="noreferrer"
         >
-          <i class="fab fa-github icons"></i>nfinnegan
+          <i className="fab fa-github icons"></i>nfinnegan
         </a>
       </div>
     </footer>

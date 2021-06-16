@@ -3,10 +3,12 @@ import "./style.css";
 
 const Header = () => {
   return (
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container heading">
-        <h1 class="display-4">React Employee Directory</h1>
-        <p class="lead">See all current employee information in aggregate</p>
+    <div className="jumbotron jumbotron-fluid">
+      <div className="container heading">
+        <h1 className="display-4">React Employee Directory</h1>
+        <p className="lead">
+          See all current employee information in aggregate
+        </p>
       </div>
     </div>
   );
