@@ -3,7 +3,7 @@ import MUIDataTable from "mui-datatables";
 const empDirectory = () => {
   let allEmps = [];
   let filteredEmps = [];
-  let newEmps = {};
+  let newEmps;
   fetch("https://randomuser.me/api/?results=20")
     .then((response) => response.json())
     .then((data) => {
@@ -11,19 +11,34 @@ const empDirectory = () => {
       const { results } = data;
       let allEmps = results;
       console.log(results);
-      for (let employee of allEmps) {
-        newEmps = {
-          id: Math.floor(Math.random() * 1000),
-          name: `${employee.name.first} ${employee.name.last}`,
-          email: employee.email,
-          phone: employee.cell,
-        };
-        // filteredEmps.push(id, name, email, phone);
-      }
+      //    allEmps.forEach((employee)=>{
+      //     newEmps = [
+      //         {
+      //           id: Math.floor(Math.random() * 1000),
+      //           name: `${employee.name.first} ${employee.name.last}`,
+      //           email: employee.email,
+      //           phone: employee.cell,
+      //         },
+      //       ];
+      //    })
 
-      console.log(newEmps);
+      for (let employee of allEmps) {
+        console.log(employee);
+        newEmps = [
+          {
+            id: Math.floor(Math.random() * 1000),
+            name: `${employee.name.first} ${employee.name.last}`,
+            email: employee.email,
+            phone: employee.cell,
+          },
+        ];
+        console.log(newEmps);
+        filteredEmps.push(...newEmps);
+      }
+      console.log(filteredEmps);
     });
 
+  console.log(filteredEmps);
   const columns = [
     {
       name: "id",
@@ -60,14 +75,15 @@ const empDirectory = () => {
   ];
 
   const options = {
-    filterType: "textField",
+    filter: true,
+    filterType: "checkbox",
   };
 
   // });
   return (
     <MUIDataTable
       title={"Employee Directory"}
-      data={filteredEmps}
+      data={newEmps}
       columns={columns}
       options={options}
     />
