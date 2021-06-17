@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import "./style.css";
 
 const EmpDirectory = () => {
   const [employees, setEmployees] = useState();
@@ -12,7 +13,7 @@ const EmpDirectory = () => {
   }, []);
 
   const getEmps = () => {
-    fetch("https://randomuser.me/api/?results=50")
+    fetch("https://randomuser.me/api/?results=50&nat=us")
       .then((response) => response.json())
       .then((data) => {
         const { results: allEmps } = data;
@@ -20,7 +21,8 @@ const EmpDirectory = () => {
           newEmps = [
             {
               id: Math.floor(Math.random() * 10000),
-              name: `${employee.name.first} ${employee.name.last}`,
+              first_name: `${employee.name.first}`,
+              last_name: `${employee.name.last}`,
               email: employee.email,
               phone: employee.cell,
             },
@@ -44,9 +46,13 @@ const EmpDirectory = () => {
       sortable: false,
     },
     {
-      name: "Employee Name",
-      selector: "name",
-      //   sortable: true,
+      name: "Employee First Name",
+      selector: "first_name",
+    },
+    {
+      name: "Employee Last Name",
+      selector: "last_name",
+      sortable: true,
     },
     {
       name: "Email",
@@ -63,7 +69,28 @@ const EmpDirectory = () => {
   console.log(employees);
 
   return (
-    <DataTable title="Employee Directory" columns={columns} data={employees} />
+    <div className="container directoryWrapper">
+      <div className="textWrapper">
+        <strong>
+          {" "}
+          <p>
+            Sort employees by last name or email. Just simply hoover over the
+            column header. Or use search!
+          </p>
+        </strong>
+        <input
+          placeholder="Search Employee By Name"
+          id="empInput"
+          type="text"
+        ></input>
+      </div>
+      <DataTable
+        className="card-body"
+        title="Employee Directory"
+        columns={columns}
+        data={employees}
+      />
+    </div>
   );
 };
 

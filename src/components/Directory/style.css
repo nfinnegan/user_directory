@@ -1,0 +1,16 @@
+.directoryWrapper {
+  font-family: "Rubik", sans-serif;
+}
+
+.textWrapper {
+  text-align: center;
+}
+
+#empInput {
+  width: 300px;
+  /* border-radius: 5px; */
+}
+
+#empInput::selection {
+  border-color: #8d99ae;
+}
