@@ -12,14 +12,14 @@ const EmpDirectory = () => {
   }, []);
 
   const getEmps = () => {
-    fetch("https://randomuser.me/api/?results=20")
+    fetch("https://randomuser.me/api/?results=50")
       .then((response) => response.json())
       .then((data) => {
         const { results: allEmps } = data;
         for (let employee of allEmps) {
           newEmps = [
             {
-              id: Math.floor(Math.random() * 1000),
+              id: Math.floor(Math.random() * 10000),
               name: `${employee.name.first} ${employee.name.last}`,
               email: employee.email,
               phone: employee.cell,
@@ -30,8 +30,9 @@ const EmpDirectory = () => {
 
         return filteredEmps;
       })
-      .then((...filteredEmps) => {
+      .then((filteredEmps) => {
         setEmployees(filteredEmps);
+        console.log(filteredEmps);
       })
       .catch((err) => console.log(err));
   };
@@ -44,17 +45,17 @@ const EmpDirectory = () => {
     },
     {
       name: "Employee Name",
-      selector: "empName",
-      sortable: true,
+      selector: "name",
+      //   sortable: true,
     },
     {
       name: "Email",
-      selector: "empEmail",
+      selector: "email",
       sortable: true,
     },
     {
       name: "Phone",
-      selector: "empPhone",
+      selector: "phone",
       sortable: false,
     },
   ];
