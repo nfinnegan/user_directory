@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
 
 const EmpDirectory = () => {
   const [employees, setEmployees] = useState();
@@ -34,8 +35,35 @@ const EmpDirectory = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const columns = [
+    {
+      name: "Emp-ID",
+      selector: "id",
+      sortable: false,
+    },
+    {
+      name: "Employee Name",
+      selector: "empName",
+      sortable: true,
+    },
+    {
+      name: "Email",
+      selector: "empEmail",
+      sortable: true,
+    },
+    {
+      name: "Phone",
+      selector: "empPhone",
+      sortable: false,
+    },
+  ];
+
   console.log(employees);
-  return <div>test</div>;
+
+  return (
+    <DataTable title="Employee Directory" columns={columns} data={employees} />
+  );
 };
 
 export default EmpDirectory;
