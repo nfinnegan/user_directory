@@ -14,3 +14,7 @@
 #empInput::selection {
   border-color: #8d99ae;
 }
+
+.searchBy {
+  color: red;
+}

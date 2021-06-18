@@ -86,8 +86,11 @@ const EmpDirectory = () => {
       <div className="textWrapper">
         <strong>
           <p>
-            Sort employees by last name or email by simply hoovering over the
-            column header & clicking. Or search employees by first name below!
+            Sort employees by{" "}
+            <span className="searchBy">last name or email</span> in ascending or
+            descending order by simply <br></br>hoovering over the column header
+            & clicking. Or search employees by{" "}
+            <span className="searchBy">first name</span> below!
           </p>
         </strong>
         <input
