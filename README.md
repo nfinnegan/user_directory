@@ -28,6 +28,8 @@ The user should be able to:
 
 ## Preview
 
+![Employee_directory_gif](assets/EmployeeDirectory.gif)
+
 ## Deployed Application
 
 ## License
