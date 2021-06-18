@@ -4,6 +4,7 @@ import "./style.css";
 
 const EmpDirectory = () => {
   const [employees, setEmployees] = useState();
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
 
   let newEmps;
   let filteredEmps = [];
@@ -34,7 +35,7 @@ const EmpDirectory = () => {
       })
       .then((filteredEmps) => {
         setEmployees(filteredEmps);
-        console.log(filteredEmps);
+        setFilteredEmployees(filteredEmps);
       })
       .catch((err) => console.log(err));
   };
@@ -66,29 +67,41 @@ const EmpDirectory = () => {
     },
   ];
 
-  console.log(employees);
+  const handleSearchInput = (event) => {
+    const searchName = event.target.value.toLowerCase();
+
+    if (searchName === "") {
+      setFilteredEmployees(employees);
+    } else {
+      const results = employees.filter((emp) => {
+        return emp.first_name.toLowerCase() == searchName;
+      });
+
+      setFilteredEmployees(results);
+    }
+  };
 
   return (
     <div className="container directoryWrapper">
       <div className="textWrapper">
         <strong>
-          {" "}
           <p>
-            Sort employees by last name or email. Just simply hoover over the
-            column header. Or use search!
+            Sort employees by last name or email by simply hoovering over the
+            column header & clicking. Or search employees by first name below!
           </p>
         </strong>
         <input
+          onChange={handleSearchInput}
           placeholder="Search Employee By Name"
           id="empInput"
           type="text"
         ></input>
       </div>
       <DataTable
-        className="card-body"
+        className="card-body resultsInfo"
         title="Employee Directory"
         columns={columns}
-        data={employees}
+        data={filteredEmployees}
       />
     </div>
   );
