@@ -6,6 +6,8 @@
 
 ## Description
 
+The Employee Directory is a React based application. Making a call to the Random User API (resource below), I used an NPM package to display the results in a table format. A user is able to search listed employees by first name or sort by last name/email. This application helped me further understand components, component sate, and user events.
+
 ## User Story
 
 - As a user, I want to be able to view my entire employee directory at once so that I have quick access to their information.
@@ -26,11 +28,20 @@ The user should be able to:
 
 ## Technologies Used
 
+- React
+- JavaScript
+- Bootstrap
+- React-data-table-component (NPM package)
+
 ## Preview
 
 ![Employee_directory_gif](assets/EmployeeDirectory.gif)
 
 ## Deployed Application
+
+Check out the deployed application here:
+
+- https://nfinnegan.github.io/user_directory/
 
 ## License
 
